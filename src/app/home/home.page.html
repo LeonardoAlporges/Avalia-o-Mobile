@@ -1,0 +1,85 @@
+<ion-header translucent >
+  <ion-toolbar color="secondary" class="nav-tolbar">
+    <i class="fas fa-angle-left icon_back" slot="start" ></i>
+    <ion-title class="title">
+      Aniversariantes
+    </ion-title>
+    <i class="fas fa-bars icon_menu" slot="end"></i>
+  </ion-toolbar>
+
+  <ion-toolbar color="success">
+    <ion-segment class="segment" >
+      <ion-segment-button class="ion-segment-button seg-btn" checked value="ANIVERSÁRIO" layout="undefined">
+        <ion-label class="space_btn" position="floating" >ANIVERSÁRIO</ion-label>
+      </ion-segment-button>
+      <ion-segment-button class=" ion-segment-button seg-btn">
+        <ion-label class="space_btn" position="floating" >UNIMED</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content class="ion-content teste">
+
+<ion-item class="subtitle" lines="none">
+  <h1 class="text">Veja os coperadores que comemoram aniversario. Selecione uma data ou pesquise pelo nome.</h1>
+</ion-item>
+
+<ion-card class="card-data">
+  <ion-item>
+    <i class="far fa-calendar-alt" id="icons-Calen" slot="start"></i>
+    <ion-datetime displayFormat="MMMM YY" placeholder="Outubro 2017" id="data-text"></ion-datetime>
+    <i class="fas fa-caret-right" slot="end" id="icons-set" ></i>
+  </ion-item>
+</ion-card>
+
+
+<ion-card class="card-input">
+  <ion-item>
+    <ion-input class="input-label" type="text" placeholder="Nome do aniversariante"></ion-input>
+  </ion-item>
+</ion-card>
+
+
+<ion-card class="card-list">
+  <ion-item class="titulo">
+    <ion-label>Aniversariante do dia</ion-label>
+      <ion-item  slot="end" class="data-list" lines="none">
+        <div style="text-align: center;">
+          <p class="data_num">30</p>
+          <p class="data_mon">OUT</p>
+        </div>
+      </ion-item>
+  </ion-item>
+
+
+  <ion-item-group lines="none">
+    <ion-item  lines="none" class="texto">
+      José da Silva Teixeira
+    </ion-item>
+    <ion-item  lines="none" class="texto">
+      Luiz Carlos Garcia
+    </ion-item>
+    <ion-item  lines="none" class="texto">
+    Maria Aparecida Vieira Couto 
+    </ion-item>
+    <ion-item  lines="none" class="texto">
+      Roberto Almeida Spoletti
+    </ion-item>
+    <ion-item   lines="none" class="texto">
+      Ana Maria Cerqueira
+    </ion-item>
+    <ion-item  lines="none" class="texto">
+      Pedro Arthu Nogueira
+    </ion-item>
+    <ion-item  lines="none" class="texto">
+      Francine Fonseca Pdrini
+    </ion-item>
+
+    
+  </ion-item-group>
+  
+</ion-card>
+  
+
+</ion-content>
