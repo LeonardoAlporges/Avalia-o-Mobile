@@ -25,10 +25,14 @@
   <h1 class="text">Veja os coperadores que comemoram aniversario. Selecione uma data ou pesquise pelo nome.</h1>
 </ion-item>
 
+<div class="check-element animate-show-hide" ng-hide="checked">
+  I hide when your checkbox is checked.
+</div>
+
 <ion-card class="card-data">
   <ion-item>
     <i class="far fa-calendar-alt" id="icons-Calen" slot="start"></i>
-    <ion-datetime displayFormat="MMMM YY" placeholder="Outubro 2017" id="data-text"></ion-datetime>
+    <ion-datetime name='data' displayFormat="MMMM YY"  Placeholder="JANEIRO - 2020" [ngModel]="Atual" (ionChange)="enviarValor($event)" value="{{Atual}}" id="data-text"></ion-datetime>
     <i class="fas fa-caret-right" slot="end" id="icons-set" ></i>
   </ion-item>
 </ion-card>
@@ -36,50 +40,36 @@
 
 <ion-card class="card-input">
   <ion-item>
-    <ion-input class="input-label" type="text" placeholder="Nome do aniversariante"></ion-input>
+    <ion-input class="input-label" type="text" placeholder="Nome do aniversariante" (ionChange)="enviarNome($event)"></ion-input>
   </ion-item>
 </ion-card>
-
 
 <ion-card class="card-list">
   <ion-item class="titulo">
     <ion-label>Aniversariante do dia</ion-label>
       <ion-item  slot="end" class="data-list" lines="none">
         <div style="text-align: center;">
-          <p class="data_num">30</p>
-          <p class="data_mon">OUT</p>
+          <p class="data_num">{{ Atual | date:"dd" }}</p>
+          <p class="data_mon">{{ Atual | date:"MMM" }}</p>
         </div>
       </ion-item>
   </ion-item>
-
-
-  <ion-item-group lines="none">
-    <ion-item  lines="none" class="texto">
-      José da Silva Teixeira
+  <ion-item-group lines="none" *ngFor="let pessoas of Aniversarios" >
+    <ion-item  lines="none" class="texto" *ngIf="pessoas.mes == [mes] || pessoas.nome == [nome]">
+      <ion-text slot="start">
+        {{pessoas.nome}}
+      </ion-text>
+      <ion-text slot="end">
+        {{pessoas.dia}}
+      </ion-text>
     </ion-item>
-    <ion-item  lines="none" class="texto">
-      Luiz Carlos Garcia
-    </ion-item>
-    <ion-item  lines="none" class="texto">
-    Maria Aparecida Vieira Couto 
-    </ion-item>
-    <ion-item  lines="none" class="texto">
-      Roberto Almeida Spoletti
-    </ion-item>
-    <ion-item   lines="none" class="texto">
-      Ana Maria Cerqueira
-    </ion-item>
-    <ion-item  lines="none" class="texto">
-      Pedro Arthu Nogueira
-    </ion-item>
-    <ion-item  lines="none" class="texto">
-      Francine Fonseca Pdrini
-    </ion-item>
-
-    
   </ion-item-group>
-  
+  <ion-item-group >
+    <ion-item >
+      Nenhum dado a ser mostrado
+    </ion-item>
+  </ion-item-group>
 </ion-card>
-  
+
 
 </ion-content>
