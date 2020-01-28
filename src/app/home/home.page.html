@@ -25,9 +25,6 @@
   <h1 class="text">Veja os coperadores que comemoram aniversario. Selecione uma data ou pesquise pelo nome.</h1>
 </ion-item>
 
-<div class="check-element animate-show-hide" ng-hide="checked">
-  I hide when your checkbox is checked.
-</div>
 
 <ion-card class="card-data">
   <ion-item>
@@ -44,32 +41,48 @@
   </ion-item>
 </ion-card>
 
-<ion-card class="card-list">
-  <ion-item class="titulo">
-    <ion-label>Aniversariante do dia</ion-label>
-      <ion-item  slot="end" class="data-list" lines="none">
-        <div style="text-align: center;">
-          <p class="data_num">{{ Atual | date:"dd" }}</p>
-          <p class="data_mon">{{ Atual | date:"MMM" }}</p>
-        </div>
-      </ion-item>
-  </ion-item>
-  <ion-item-group lines="none" *ngFor="let pessoas of Aniversarios" >
-    <ion-item  lines="none" class="texto" *ngIf="pessoas.mes == [mes] || pessoas.nome == [nome]">
-      <ion-text slot="start">
-        {{pessoas.nome}}
-      </ion-text>
-      <ion-text slot="end">
-        {{pessoas.dia}}
-      </ion-text>
-    </ion-item>
-  </ion-item-group>
-  <ion-item-group >
-    <ion-item >
-      Nenhum dado a ser mostrado
-    </ion-item>
-  </ion-item-group>
-</ion-card>
+<div *ngFor="let pessoas of Aniversarios;let i = index">
+  <div *ngFor="let i of dia">
+  <ion-card class="card-list" lines="none" *ngIf="pessoas.mes == [mes] && pessoas.dia == i">
 
+    <ion-item class="titulo"  class="texto" >
+      <ion-label>Aniversariante do dia</ion-label>
+        <ion-item  slot="end" class="data-list" lines="none">
+          <div style="text-align: center;">
+            <p class="data_num">{{i}} </p>
+            <p class="data_mon">{{pessoas.mes | date : "MMM" }}</p>
+          </div>
+        </ion-item>
+    </ion-item>
+    <ion-item-group lines="none"  >
+      <ion-item  >
+        <ion-text slot="start">
+          {{pessoas.nome}}
+        </ion-text>
+        <ion-text slot="end">
+          {{pessoas.dia}}
+        </ion-text>
+      </ion-item>
+    </ion-item-group>
+<div *ngFor="let busca of Aniversarios">
+  <div *ngIf="pessoas.mes == [mes] && pessoas.dia == i && busca.mes ==[mes] && busca.dia== i ">
+    <ion-item-group lines="none"  >
+      <ion-item  >
+        <ion-text slot="start">
+          {{pessoas.nome}}
+        </ion-text>
+        <ion-text slot="end">
+          {{pessoas.dia}}
+        </ion-text>
+      </ion-item>
+    </ion-item-group>
+  </div>
+</div>
+
+  </ion-card>
+</div>
+  
+</div>
 
 </ion-content>
+
