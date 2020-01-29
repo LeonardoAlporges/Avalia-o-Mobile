@@ -41,27 +41,30 @@
   </ion-item>
 </ion-card>
 
-<div *ngFor="let pessoas of Aniversarios">
-  <div *ngFor="let i of dia">
-  <ion-card class="card-list" lines="none" *ngIf="pessoas.mes==[mes] && pessoas.dia == i" (click)="teste(pessoas)">
+<div >
+  <div >
+  <ion-card class="card-list" lines="none" *ngFor="let i of dia" (click)="BuscaDoDia(pessoas)">
     <ion-item class="titulo"  class="texto" >
       <ion-label>Aniversariante do dia</ion-label>
         <ion-item  slot="end" class="data-list" lines="none">
           <div style="text-align: center;">
             <p class="data_num">{{i}} </p>
-            <p class="data_mon">{{pessoas.mes | date : "MMM" }}</p>
+            <p class="data_mon">{{ 1 | date : "MMM" }}</p>
           </div>
         </ion-item>
     </ion-item>
     <ion-item-group lines="none">
-      <ion-item >
-        <ion-text slot="start">
-          {{pessoas.nome}}
-        </ion-text>
-        <ion-text slot="end">
-          {{pessoas.dia}}
-        </ion-text>
-      </ion-item>
+      <ng-container *ngFor="let pessoas of Aniversarios">
+        <ion-item *ngIf="pessoas.mes==[mes] && pessoas.dia == i" >
+          <ion-text slot="start">
+            {{pessoas.nome}}
+          </ion-text>
+          <ion-text slot="end">
+            {{pessoas.dia}}
+          </ion-text>
+        </ion-item>
+      </ng-container>
+     
     </ion-item-group>
 
 <div *ngFor="let busca of MesmoDia" >
