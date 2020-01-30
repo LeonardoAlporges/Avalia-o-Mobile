@@ -20,16 +20,10 @@ export class HomePage {
   ngOnInit() {
     this.CalendarioService.getAniversariantes().subscribe((data : any[])=>{
     this.Aniversarios = data;
+    this.mes =  String(this.Atual.getMonth() +1);
     this.filtradias();
-
-      this.mes =  String(this.Atual.getMonth() +1);
-
-
+    
     });
-  }
-  teste(){
-    console.log('ok');
-    alert('ok')
   }
 
   filtradias(){
@@ -47,4 +41,5 @@ export class HomePage {
     this.mes = this.mes.substr(0,1);
     this.filtradias();
   }
+  
 }

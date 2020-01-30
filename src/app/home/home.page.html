@@ -29,7 +29,7 @@
 <ion-card class="card-data">
   <ion-item>
     <i class="far fa-calendar-alt" id="icons-Calen" slot="start"></i>
-    <ion-datetime name='data' displayFormat="MMMM YY"  value="2020-01-29" (ionChange)="enviarValor($event)" id="data-text"></ion-datetime>
+    <ion-datetime name='data' displayFormat="MMMM YYYY"  value={{Atual}} (ionChange)="enviarValor($event)" id="data-text"></ion-datetime>
     <i class="fas fa-caret-right" slot="end" id="icons-set" ></i>
   </ion-item>
 </ion-card>
@@ -37,12 +37,12 @@
 
 <ion-card class="card-input">
   <ion-item>
-    <ion-input class="input-label" type="text" placeholder="Nome do aniversariante" (ionChange)="enviarNome($event)"></ion-input>
+    <ion-input class="input-label" type="text" placeholder="Nome do aniversariante"  (ionChange)="enviarNome($event)"></ion-input>
   </ion-item>
 </ion-card>
 
 
-  <ion-card class="card-list" lines="none" *ngFor="let i of dia"> <!-- Pecorrer o vetor de array pegando as data em que existe aniversarios -->
+  <ion-card class="card-list" lines="none" *ngFor="let i of dia">
     <ion-item class="titulo"  class="texto" >
       <ion-label>Aniversariante do dia</ion-label>
         <ion-item  slot="end" class="data-list" lines="none">
@@ -53,8 +53,8 @@
         </ion-item>
     </ion-item>
     <ion-item-group lines="none">
-      <ng-container *ngFor="let pessoas of Aniversarios"><!-- Pecorrer o vetor de array Aniversariantes pegandos as pessoas que fazem aniversariantes -->
-        <ion-item *ngIf="pessoas.mes==[mes] && pessoas.dia == i" ><!-- Verificar se o mes que eu selecionei é o mesmo que estou verificando , junto com a verificação de dias -->
+      <ng-container *ngFor="let pessoas of Aniversarios">
+        <ion-item *ngIf="pessoas.mes==[mes] && pessoas.dia == i" >
           <ion-text slot="start">
             {{pessoas.nome}}
           </ion-text>
@@ -63,7 +63,11 @@
           </ion-text>
         </ion-item>
       </ng-container>
+     
     </ion-item-group>
+
+    
+
 </ion-card>
   
 
