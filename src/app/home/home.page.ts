@@ -12,37 +12,34 @@ export class HomePage {
 
   Atual: Date = new Date();
   Aniversarios: any[] = [];
-  mes : string;
-  nome: string;
-  isHidden: boolean = true;
-  contador: number = 0;
-  dia: number[] = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,21,22,23,24,25,26,27,29,29,30];
+  mes : string ;
+  dia: number[] = [];
 
   constructor(private CalendarioService: CalendarioService) { }
 
   ngOnInit() {
+    this.CalendarioService.getAniversariantes().subscribe((data : any[])=>{
+    this.Aniversarios = data;
+    this.mes =  String(this.Atual.getMonth() +1);
+    this.filtradias();
     
+    });
   }
 
-  BuscarData(){
-    this.CalendarioService.getAniversariantes().subscribe((data : any[])=>{
-      this.Aniversarios = data;
-      console.log(this.Aniversarios);
-  })
+  filtradias(){
+    this.dia = this.Aniversarios.reduce((array,aniversariante) => { 
+      if(this.mes == aniversariante.mes && array.indexOf(aniversariante.dia) < 0 ){
+        array.push(aniversariante.dia);
+      }
+    return array;
+    },[])
   }
-  
 
   enviarValor(event){
     var controlador = event.detail.value;
     this.mes = controlador.substr(6,7);
     this.mes = this.mes.substr(0,1);
-    this.BuscarData(); 
+    this.filtradias();
   }
-
-  enviarNome(event){
-    this.nome = event.detail.value;
-    this.BuscarData();
-  }
-
-
+  
 }
