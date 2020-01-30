@@ -42,19 +42,19 @@
 </ion-card>
 
 
-  <ion-card class="card-list" lines="none" *ngFor="let i of dia">
+  <ion-card class="card-list" lines="none" *ngFor="let i of dia">  <!--Pecorrer um vetor de dias que existe aniversariante no mes especificado -->
     <ion-item class="titulo"  class="texto" >
       <ion-label>Aniversariante do dia</ion-label>
         <ion-item  slot="end" class="data-list" lines="none">
           <div class="data-sel">
-            <p class="data_num">{{i}} </p>
-            <p class="data_mon">{{ Atual | date : "MMM" }}</p>
+            <p class="data_num">{{i}} </p>  <!--Se refere a posição  que encontrou aniversariantes naquele dia, no caso o dia do aniversario -->
+            <p class="data_mon">{{ Atual | date : "MMM" }}</p> <!--Mes atual local-->
           </div>
         </ion-item>
     </ion-item>
     <ion-item-group lines="none">
-      <ng-container *ngFor="let pessoas of Aniversarios">
-        <ion-item *ngIf="pessoas.mes==[mes] && pessoas.dia == i" >
+      <ng-container *ngFor="let pessoas of Aniversarios"><!--Pecorre vetor de Aniversariantes pegando as pessoas que tem nele-->
+        <ion-item *ngIf="pessoas.mes==[mes] && pessoas.dia == i" ><!--Verificaçao para ver se o sao do mesmo dia e mesmo mes , pra ser gerado em um mesmo card-->
           <ion-text slot="start">
             {{pessoas.nome}}
           </ion-text>
